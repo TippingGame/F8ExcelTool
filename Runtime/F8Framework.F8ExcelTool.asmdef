@@ -1,0 +1,16 @@
+{
+    "name": "F8Framework.F8ExcelTool",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f774ecce4920052458871f649ea9fc50"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -6,7 +6,9 @@
   "unity": "2021.3",
   "license": "MIT",
   "keywords": ["Unity", "Excel", "Tool"],
-  "dependencies": {},
+  "dependencies": {
+    "com.tippinggame.f8framework": "1.0.0"
+  },
   "author": {
     "name": "TippingGame",
     "email": "tippinggame@163.com",
@@ -15,5 +17,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TippingGame/F8ExcelTool.git"
-  }
+  },
+  "documentationUrl": "https://github.com/TippingGame/F8ExcelTool/blob/main/README.md"
 }

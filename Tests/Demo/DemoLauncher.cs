@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TippingGame.F8ExcelTool;
+using F8Framework.F8ExcelTool;
 public class DemoLauncher : MonoBehaviour
 {
     public Text text;

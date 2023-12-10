@@ -5,10 +5,9 @@ using System;
 using UnityEngine;
 using System.IO;
 using System.Reflection;
-using TippingGame;
-//脚本生成器
 
-namespace TippingGame.F8ExcelTool.Editor
+//脚本生成器
+namespace F8Framework.F8ExcelTool.Editor
 {
     public class ScriptGenerator
     {
@@ -202,6 +201,7 @@ namespace TippingGame.F8ExcelTool.Editor
             source.Append("using System.Runtime.Serialization.Formatters.Binary;\n");
             source.Append("using System.IO;\n");
             source.Append("using " + ExcelDataTool.CODE_NAMESPACE + ";\n\n");
+            source.Append("using F8Framework.Core;\n");
             source.Append("[Serializable]\n");
             source.Append("public class F8DataManager : Singleton<F8DataManager>\n");
             source.Append("{\n");

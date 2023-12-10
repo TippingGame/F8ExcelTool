@@ -1,0 +1,19 @@
+{
+    "name": "F8Framework.F8ExcelTool.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f774ecce4920052458871f649ea9fc50",
+        "GUID:3e903b0a48d2baf4991998ce99e8dbca"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

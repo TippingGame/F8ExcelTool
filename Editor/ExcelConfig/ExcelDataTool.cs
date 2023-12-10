@@ -11,8 +11,8 @@ using System.Text;
 using UnityEngine;
 using UnityEditor;
 using Excel;
-using TippingGame.F8Framework;
-namespace TippingGame.F8ExcelTool.Editor
+using F8Framework.Core;
+namespace F8Framework.F8ExcelTool.Editor
 {
     public class ExcelDataTool
     {
