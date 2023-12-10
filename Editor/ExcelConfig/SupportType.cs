@@ -8,7 +8,7 @@ using System.Reflection;
 using TippingGame;
 //脚本生成器
 
-namespace TippingGame.f8exceltool
+namespace TippingGame.F8ExcelTool.Editor
 {
     public class ScriptGenerator
     {

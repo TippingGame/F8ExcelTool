@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using Excel;
-using TippingGame;
+using TippingGame.F8Framework;
 
-namespace TippingGame.f8exceltool
+namespace TippingGame.F8ExcelTool
 {
     public class SupportType
     {

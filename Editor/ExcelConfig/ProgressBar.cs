@@ -1,7 +1,7 @@
 using UnityEditor;
 using TippingGame;
 
-namespace TippingGame.f8exceltool
+namespace TippingGame.F8ExcelTool.Editor
 {
     public class ProgressBar : EditorWindow
     {
