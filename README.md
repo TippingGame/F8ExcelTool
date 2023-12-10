@@ -7,7 +7,8 @@
 ## 简介
 Unity读取Excel工具，点击F8自动生成C#索引字段，能读取Excel导出的二进制文件，运行时读取Excel文件，支持Win/Android/iOS/Mac/Linux  
 
-## 导入插件
+## 导入插件（需要首先导入核心）
+F8Framework核心：https://github.com/TippingGame/F8Framework.git  
 方式一：直接下载文件，放入Unity  
 方式二：Unity->点击菜单栏->Window->Package Manager->点击+号->Add Package from git URL->输入：https://github.com/TippingGame/F8ExcelTool.git  
 
