@@ -13,8 +13,8 @@ F8Framework核心：https://github.com/TippingGame/F8Framework.git
 方式二：Unity->点击菜单栏->Window->Package Manager->点击+号->Add Package from git URL->输入：https://github.com/TippingGame/F8ExcelTool.git  
 
 ## 使用流程
-导入插件，在目录StreamingAssets/config下创建Excel后，点击菜单栏->开发工具->导入配置表_F8（快捷键）  
-游戏运行时读取Excel数据，点击菜单栏->开发工具->运行时读取Excel_F7（快捷键）  
+1、在目录StreamingAssets/config下创建Excel  2、点击菜单栏->开发工具->导入配置表_F8（快捷键）  
+3、根目录下会生成"F8ExcelTool"目录  4、游戏运行时读取Excel数据，点击菜单栏->开发工具->运行时读取Excel_F7（快捷键）  
 
 ### 读取二进制文件
 ```C#
@@ -54,8 +54,7 @@ F8Framework核心：https://github.com/TippingGame/F8Framework.git
 ## 目录结构
 ---F8ExcelTool  
 ----Editor（编辑器代码）  
-----Plugins（库文件/生成的字段索引库）  
-----Resources（生成的二进制文件）  
+----Plugins（库文件）  
 ----Runtime（运行时代码）  
 ----Tests（测试场景Demo）  
 
