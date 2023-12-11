@@ -80,7 +80,7 @@ namespace F8Framework.F8ExcelTool.Editor
             classSource.Append("}\n");
             return classSource.ToString();
             /*  //生成的条目数据类
-                namespace ExcelDataClass
+                namespace F8ExcelDataClass
                 {
                     public class testItem
                     {
@@ -200,7 +200,7 @@ namespace F8Framework.F8ExcelTool.Editor
             source.Append("using System.Runtime.Serialization;\n");
             source.Append("using System.Runtime.Serialization.Formatters.Binary;\n");
             source.Append("using System.IO;\n");
-            source.Append("using " + ExcelDataTool.CODE_NAMESPACE + ";\n\n");
+            source.Append("using " + ExcelDataTool.CODE_NAMESPACE + ";\n");
             source.Append("using F8Framework.Core;\n");
             source.Append("[Serializable]\n");
             source.Append("public class F8DataManager : Singleton<F8DataManager>\n");

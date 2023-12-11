@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using F8Framework.Core;
 using F8Framework.F8ExcelTool;
-public class DemoLauncher : MonoBehaviour
+public class DemoExcelLauncher : MonoBehaviour
 {
     public Text text;
     //方式一：

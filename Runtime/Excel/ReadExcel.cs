@@ -7,6 +7,8 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using Excel;
 using F8Framework.Core;
+using Assembly = System.Reflection.Assembly;
+
 namespace F8Framework.F8ExcelTool
 {
     public class SupportType
@@ -28,7 +30,7 @@ namespace F8Framework.F8ExcelTool
 
     public class ReadExcel : Singleton<ReadExcel>
     {
-        private const string CODE_NAMESPACE = "ExcelDataClass"; //由表生成的数据类型均在此命名空间内
+        private const string CODE_NAMESPACE = "F8ExcelDataClass"; //由表生成的数据类型均在此命名空间内
         private const string ExcelPath = "config"; //需要导表的目录
         private Dictionary<string, List<ConfigData[]>> dataDict; //存放所有数据表内的数据，key：类名  value：数据
 
@@ -81,9 +83,24 @@ namespace F8Framework.F8ExcelTool
                 Serialize(container, temp, each.Value);
                 objs.Add(each.Key, container);
             }
-
-            // F8DataManager.Instance.RuntimeLoadAll(objs);
-            Debug.Log("<color=green>运行时导表成功！需要检查是否有取消注释上一行代码！</color>");
+            string _class = "F8DataManager";
+            string method= "RuntimeLoadAll";
+            var allAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+            var type = allAssemblies.SelectMany(assembly => assembly.GetTypes()).FirstOrDefault(type1 => type1.Name == _class);
+            if (type == null)
+            {
+                Debug.LogError("需要检查是否有正确生成F8DataManager.cs!");
+            }
+            else
+            {
+                //通过反射，获取单例的实例
+                var property = type.BaseType.GetProperty("Instance");
+                var instance = property.GetValue(null,null);
+                object[] parameters = new object[] { objs };
+                var myMethodExists = type.GetMethod(method);
+                myMethodExists.Invoke(instance,parameters);
+                Debug.Log("<color=green>运行时导表成功！</color>");
+            }
         }
 
         //数据表内每一格数据

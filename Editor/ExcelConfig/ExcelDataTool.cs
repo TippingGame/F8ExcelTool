@@ -16,7 +16,7 @@ namespace F8Framework.F8ExcelTool.Editor
 {
     public class ExcelDataTool
     {
-        public const string CODE_NAMESPACE = "ExcelDataClass"; //由表生成的数据类型均在此命名空间内
+        public const string CODE_NAMESPACE = "F8ExcelDataClass"; //由表生成的数据类型均在此命名空间内
 
         public const string
             BinDataFolder = "/F8ExcelTool/Resources/BinConfigData"; //序列化的数据文件都会放在此文件夹内,此文件夹位于Resources文件夹下用于读取数据

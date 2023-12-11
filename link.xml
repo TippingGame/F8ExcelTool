@@ -9,7 +9,7 @@
         <assembly fullname="I18N.West" preserve="all" />
          <assembly fullname="ICSharpCode.SharpZipLib" preserve="all" />
 	       <assembly fullname="Excel" preserve="all" />
-	         <assembly fullname="ExcelDataClass" preserve="all" />
+	         <assembly fullname="F8ExcelDataClass" preserve="all" />
                 <assembly fullname="F8Framework.Core" preserve="all" />
                     <assembly fullname="F8Framework.F8ExcelTool" preserve="all" />
 </linker>
