@@ -37,7 +37,7 @@ namespace F8Framework.F8ExcelTool
         public void LoadAllExcelData()
         {
 #if UNITY_EDITOR || UNITY_STANDALONE
-            string INPUT_PATH = URLSetting.CS_STREAMINGASSETS_URL + ExcelPath;
+        string INPUT_PATH = URLSetting.CS_STREAMINGASSETS_URL + ExcelPath;
 #elif UNITY_ANDROID
         string INPUT_PATH = Application.persistentDataPath + "/" + ExcelPath;
 #elif UNITY_IPHONE || UNITY_IOS
@@ -89,7 +89,7 @@ namespace F8Framework.F8ExcelTool
             var type = allAssemblies.SelectMany(assembly => assembly.GetTypes()).FirstOrDefault(type1 => type1.Name == _class);
             if (type == null)
             {
-                Debug.LogError("需要检查是否有正确生成F8DataManager.cs!");
+                LogF8.LogError("需要检查是否有正确生成F8DataManager.cs!");
             }
             else
             {
@@ -99,7 +99,7 @@ namespace F8Framework.F8ExcelTool
                 object[] parameters = new object[] { objs };
                 var myMethodExists = type.GetMethod(method);
                 myMethodExists.Invoke(instance,parameters);
-                Debug.Log("<color=green>运行时导表成功！</color>");
+                LogF8.LogConfig("<color=green>运行时导表成功！</color>");
             }
         }
 
@@ -197,7 +197,7 @@ namespace F8Framework.F8ExcelTool
                         }
 
                         dataDict.Add(className, dataList);
-                        Debug.Log(className);
+                        LogF8.LogConfig(className);
                     }
                 } while (excelReader.NextResult()); //excelReader.NextResult() Excel表下一个sheet页有没有数据
             }
@@ -226,7 +226,7 @@ namespace F8Framework.F8ExcelTool
                     else
                     {
                         //2019.4.28f1,2020.3.33f1都出现的BUG（2021.3.8f1测试通过），编译dll后没及时刷新，导致修改name或id后读取失败，需要二次编译
-                        Debug.Log("info是空的：" + data.Name);
+                        LogF8.LogConfig("info是空的：" + data.Name);
                     }
                 }
 
@@ -247,7 +247,7 @@ namespace F8Framework.F8ExcelTool
 
         private static void DebugError(string type, string data, string classname)
         {
-            Debug.LogError(string.Format("数据类型错误：类型：{0}  数据：{1}  类名：{2}", type, data, classname));
+            LogF8.LogError(string.Format("数据类型错误：类型：{0}  数据：{1}  类名：{2}", type, data, classname));
         }
 
         public static object ParseValue(string type, string data, string classname)

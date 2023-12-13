@@ -5,6 +5,7 @@ using System;
 using UnityEngine;
 using System.IO;
 using System.Reflection;
+using F8Framework.Core;
 
 //脚本生成器
 namespace F8Framework.F8ExcelTool.Editor
@@ -279,7 +280,7 @@ namespace F8Framework.F8ExcelTool.Editor
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             StreamWriter sw = new StreamWriter(path + "/" + ExcelDataTool.DataManagerName);
             sw.WriteLine(source.ToString());
-            Debug.Log("已生成 " + path + "/<color=#FFFF00>" + ExcelDataTool.DataManagerName + "</color>");
+            LogF8.LogConfig("已生成 " + path + "/<color=#FFFF00>" + ExcelDataTool.DataManagerName + "</color>");
             sw.Close();
 
             /*  //生成的数据管理类如下

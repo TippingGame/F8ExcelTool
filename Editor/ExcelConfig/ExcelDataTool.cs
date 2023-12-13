@@ -117,7 +117,7 @@ namespace F8Framework.F8ExcelTool.Editor
             ScriptGenerator.CreateDataManager(assembly);
             ProgressBar.UpdataBar("\n导表成功!", 1);
             UnityEditor.AssetDatabase.Refresh();
-            Debug.Log("<color=yellow>导表成功!</color>");
+            LogF8.LogConfig("<color=yellow>导表成功!</color>");
         }
 
         [UnityEditor.MenuItem("开发工具/运行时读取Excel _F7")]
@@ -277,13 +277,13 @@ namespace F8Framework.F8ExcelTool.Editor
                 ProgressBar.HideBarWithFailInfo("\n编译dll出错（详情见控制台）！");
                 foreach (CompilerError err in cr.Errors)
                 {
-                    Debug.LogError(err.ErrorText);
+                    LogF8.LogError(err.ErrorText);
                 }
 
                 throw new Exception("编译dll出错！");
             }
 
-            Debug.Log("已编译 " + path + "/<color=#FFFF00>" + CODE_NAMESPACE + ".dll</color>");
+            LogF8.LogConfig("已编译 " + path + "/<color=#FFFF00>" + CODE_NAMESPACE + ".dll</color>");
             return cr.CompiledAssembly;
         }
 
@@ -307,7 +307,7 @@ namespace F8Framework.F8ExcelTool.Editor
                     else
                     {
                         //2019.4.28f1,2020.3.33f1都出现的BUG（2021.3.8f1测试通过），编译dll后没及时刷新，导致修改name或id后读取失败，需要二次编译
-                        Debug.Log("info是空的：" + data.Name);
+                        LogF8.LogConfig("info是空的：" + data.Name);
                     }
                 }
 
@@ -330,7 +330,7 @@ namespace F8Framework.F8ExcelTool.Editor
             Stream s = new FileStream(BinDataPath + "/" + container.GetType().Name + ".bytes", FileMode.OpenOrCreate,
                 FileAccess.Write, FileShare.Write);
             f.Serialize(s, container);
-            Debug.Log("已序列化 " + BinDataPath + "/<color=#FFFF00>" + container.GetType().Name + ".bytes</color>");
+            LogF8.LogConfig("已序列化 " + BinDataPath + "/<color=#FFFF00>" + container.GetType().Name + ".bytes</color>");
             s.Close();
         }
     }
