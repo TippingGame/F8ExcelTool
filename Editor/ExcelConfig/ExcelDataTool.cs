@@ -203,13 +203,17 @@ namespace F8Framework.F8ExcelTool.Editor
                             continue;
                         }
 
-                        //第4行表示类型
+                        //第1行表示类型
                         if (index == 1) types = datas;
-                        //第5行表示变量名
+                        //第2行表示变量名
                         else if (index == 2) names = datas;
                         //后面的表示数据
                         else if (index > 2)
                         {
+                            if (types == null || names == null || datas == null){
+                                ProgressBar.HideBarWithFailInfo("\n数据错误！["+ className +"]配置表！第" + index + "行\n" + inputPath);
+                                throw new Exception("数据错误！["+ className +"]配置表！第" + index + "行" + inputPath);
+                            }
                             //把读取的数据和数据类型,名称保存起来,后面用来动态生成类
                             List<ConfigData> configDataList = new List<ConfigData>();
                             for (int j = 0; j < datas.Length; ++j)
@@ -280,7 +284,7 @@ namespace F8Framework.F8ExcelTool.Editor
                     LogF8.LogError(err.ErrorText);
                 }
 
-                throw new Exception("编译dll出错！");
+                throw new Exception("编译dll出错！请检查配置表格式！");
             }
 
             LogF8.LogConfig("已编译 " + path + "/<color=#FFFF00>" + CODE_NAMESPACE + ".dll</color>");

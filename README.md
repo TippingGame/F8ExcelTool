@@ -4,13 +4,14 @@
 [![Unity Version](https://img.shields.io/badge/unity-2021.3.15f1-blue)](https://unity.com) 
 [![Platform](https://img.shields.io/badge/platform-Win%20%7C%20Android%20%7C%20iOS%20%7C%20Mac%20%7C%20Linux-orange)]() 
 
-## 简介
+## 简介（希望自己点击F8，就能开始制作游戏，不想多余的事）
 Unity读取Excel工具，点击F8自动生成C#索引字段，能读取Excel导出的二进制文件，运行时读取Excel文件，支持Win/Android/iOS/Mac/Linux  
 
 ## 导入插件（需要首先导入核心）
-F8Framework核心：https://github.com/TippingGame/F8Framework.git  
+注意！此包依赖->F8Framework核心：https://github.com/TippingGame/F8Framework.git  
 方式一：直接下载文件，放入Unity  
 方式二：Unity->点击菜单栏->Window->Package Manager->点击+号->Add Package from git URL->输入：https://github.com/TippingGame/F8ExcelTool.git  
+URL->输入：https://github.com/TippingGame/F8Framework.git  
 
 ## 使用流程
 1、在目录StreamingAssets/config下创建Excel  
@@ -28,8 +29,8 @@ F8Framework核心：https://github.com/TippingGame/F8Framework.git
 ```
 ### 打印数据
 ```C#
-        Debug.Log(F8DataManager.Instance.GetfasdffByID(115).name);
-        foreach (var VARIABLE in F8DataManager.Instance.GetfasdffByID(113).llliststr)
+        Debug.Log(F8DataManager.Instance.GetTableByID(115).name);//注意，Table替换为你的配置表名，name为表的一个属性
+        foreach (var VARIABLE in F8DataManager.Instance.GetTableByID(113).llliststr)
         {
             foreach (var VARIABLE2 in VARIABLE)
             {

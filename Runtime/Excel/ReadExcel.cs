@@ -158,13 +158,16 @@ namespace F8Framework.F8ExcelTool
                             continue;
                         }
 
-                        //第4行表示类型
+                        //第1行表示类型
                         if (index == 1) types = datas;
-                        //第5行表示变量名
+                        //第2行表示变量名
                         else if (index == 2) names = datas;
                         //后面的表示数据
                         else if (index > 2)
                         {
+                            if (types == null || names == null || datas == null){
+                                throw new Exception("数据错误！["+ className +"]配置表！第" + index + "行" + inputPath);
+                            }
                             //把读取的数据和数据类型,名称保存起来,后面用来动态生成类
                             List<ConfigData> configDataList = new List<ConfigData>();
                             for (int j = 0; j < datas.Length; ++j)
