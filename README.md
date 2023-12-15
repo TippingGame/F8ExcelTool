@@ -2,8 +2,12 @@
 
 [![license](http://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Unity Version](https://img.shields.io/badge/unity-2021.3.15f1-blue)](https://unity.com) [![Platform](https://img.shields.io/badge/platform-Win%20%7C%20Android%20%7C%20iOS%20%7C%20Mac%20%7C%20Linux-orange)]()
 
-## 简介（希望自己点击 F8，就能开始制作游戏，不想多余的事）
-[README.md](README.md)
+> F8 框架初衷：希望自己点击 F8，就能开始制作游戏，不想多余的事。
+> 
+> F8 Framework original intention: Just click F8 and start making the game, don't want to be redundant.
+
+## 简介
+
 Unity 读取 Excel 的工具。
 
 点击 F8 自动生成 C# 索引字段，随后：
