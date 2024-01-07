@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using F8Framework.Core;
@@ -47,7 +48,21 @@ public class DemoExcelLauncher : MonoBehaviour
     //     else
     //     {
     //         string ss = www.text;
-    //         paths = ss.Split('\n', (char)StringSplitOptions.RemoveEmptyEntries);
+    //         // 去除夹杂的空行
+    //         string[] lines = ss.Split('\n');
+    //         List<string> nonEmptyLines = new List<string>();
+    //
+    //         foreach (string line in lines)
+    //         {
+    //             string trimmedLine = line.Trim();
+    //
+    //             if (!string.IsNullOrEmpty(trimmedLine))
+    //             {
+    //                 nonEmptyLines.Add(trimmedLine);
+    //             }
+    //         }
+    //
+    //         paths = nonEmptyLines.ToArray();
     //     }
     //
     //     for (int i = 0; i < paths.Length; i++)

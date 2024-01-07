@@ -34,7 +34,6 @@ namespace F8Framework.F8ExcelTool.Editor
         // 使用StringBuilder来优化字符串的重复构造
         private static StringBuilder FileIndex = new StringBuilder();
 
-        [UnityEditor.MenuItem("开发工具/导入配置表 _F8")]
         public static void LoadAllExcelData()
         {
             EditorUtility.ClearProgressBar();

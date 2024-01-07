@@ -42,6 +42,8 @@ namespace F8Framework.F8ExcelTool
         string INPUT_PATH = Application.persistentDataPath + "/" + ExcelPath;
 #elif UNITY_IPHONE || UNITY_IOS
         string INPUT_PATH = URLSetting.CS_STREAMINGASSETS_URL + ExcelPath;
+#else
+        string INPUT_PATH = URLSetting.CS_STREAMINGASSETS_URL + ExcelPath;
 #endif
             if (string.IsNullOrEmpty(INPUT_PATH))
             {

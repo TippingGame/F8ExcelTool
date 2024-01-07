@@ -265,9 +265,7 @@ namespace F8Framework.F8ExcelTool.Editor
             source.Append("\tprivate System.Object Load(string name)\n");
             source.Append("\t{\n");
             source.Append("\t\tIFormatter f = new BinaryFormatter();\n");
-            source.Append("\t\tTextAsset text = Resources.Load<TextAsset>(" + '"' +
-                          ExcelDataTool.BinDataFolderLoadName +
-                          "/" + '"' + " + name);\n");
+            source.Append("\t\tTextAsset text = AssetManager.Instance.Load<TextAsset>(name);\n");
             source.Append("\t\tStream s = new MemoryStream(text.bytes);\n");
             source.Append("\t\tSystem.Object obj = f.Deserialize(s);\n");
             source.Append("\t\ts.Close();\n");
@@ -317,7 +315,7 @@ namespace F8Framework.F8ExcelTool.Editor
                     private System.Object Load(string name)
                     {
                         IFormatter f = new BinaryFormatter();
-                        TextAsset text = Resources.Load<TextAsset>("BinConfigData/" + name);
+                        TextAsset text = AssetManager.Instance.Load<TextAsset>(name);
                         Stream s = new MemoryStream(text.bytes);
                         System.Object obj = f.Deserialize(s);
                         s.Close();
