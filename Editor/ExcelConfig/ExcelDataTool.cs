@@ -14,14 +14,12 @@ using Excel;
 using F8Framework.Core;
 namespace F8Framework.F8ExcelTool.Editor
 {
-    public class ExcelDataTool
+    public class ExcelDataTool : ScriptableObject
     {
-        public const string CODE_NAMESPACE = "F8ExcelDataClass"; //由表生成的数据类型均在此命名空间内
+        public const string CODE_NAMESPACE = "F8Framework.F8ExcelDataClass"; //由表生成的数据类型均在此命名空间内
 
         public const string
             BinDataFolder = "/F8ExcelTool/Resources/BinConfigData"; //序列化的数据文件都会放在此文件夹内,此文件夹位于Resources文件夹下用于读取数据
-
-        public const string BinDataFolderLoadName = "BinConfigData"; //加载方式的数据文件夹名（如Resources加载）
         public const string DataManagerFolder = "/F8ExcelTool/Scripts/F8DataManager"; //Data代码路径
         public const string DataManagerName = "F8DataManager.cs"; //Data代码脚本名
         public const string ExcelPath = "/StreamingAssets/config"; //需要导表的目录
@@ -34,8 +32,48 @@ namespace F8Framework.F8ExcelTool.Editor
         // 使用StringBuilder来优化字符串的重复构造
         private static StringBuilder FileIndex = new StringBuilder();
 
+        private static string GetScriptPath()
+        {
+            MonoScript monoScript = MonoScript.FromScriptableObject(CreateInstance<ExcelDataTool>());
+
+            // 获取脚本在 Assets 中的相对路径
+            string scriptRelativePath = AssetDatabase.GetAssetPath(monoScript);
+
+            // 获取绝对路径并规范化
+            string scriptPath = Path.GetFullPath(Path.Combine(Application.dataPath, "..", scriptRelativePath));
+
+            return scriptPath;
+        }
+        
+        private static void CreateAsmdefFile()
+        {
+            // 创建.asmdef文件的路径
+            string asmdefPath = Application.dataPath + DataManagerFolder + "/F8Framework.F8DataManager.asmdef";
+            
+            FileTools.CheckFileAndCreateDirWhenNeeded(asmdefPath);
+            // 创建一个新的.asmdef文件
+            string asmdefContent = @"{
+    ""name"": ""F8Framework.F8DataManager"",
+    ""references"": [""F8Framework.Core""],
+    ""includePlatforms"": [],
+    ""excludePlatforms"": [],
+    ""allowUnsafeCode"": false,
+    ""overrideReferences"": false,
+    ""precompiledReferences"": [],
+    ""autoReferenced"": true,
+    ""defineConstraints"": [],
+    ""versionDefines"": [],
+    ""noEngineReferences"": false
+}";
+
+            // 将内容写入.asmdef文件
+            File.WriteAllText(asmdefPath, asmdefContent);
+        }
+        
         public static void LoadAllExcelData()
         {
+            FileTools.SafeDeleteDir(FileTools.FormatToUnityPath(FileTools.TruncatePath(GetScriptPath(), 4)) + DataManagerFolder);
+            CreateAsmdefFile();
             EditorUtility.ClearProgressBar();
             string INPUT_PATH = Application.dataPath + ExcelPath;
 
@@ -262,7 +300,7 @@ namespace F8Framework.F8ExcelTool.Editor
         //编译代码
         private static Assembly CompileCode(string[] scripts)
         {
-            string path = Application.dataPath + DLLFolder + "/" + CODE_NAMESPACE;
+            string path = Application.dataPath + DLLFolder + "/F8ExcelDataClass";
             if (Directory.Exists(path)) Directory.Delete(path, true); //删除旧dll
             Directory.CreateDirectory(path);
             //编译器实例对象

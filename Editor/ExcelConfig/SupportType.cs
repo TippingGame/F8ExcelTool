@@ -202,15 +202,16 @@ namespace F8Framework.F8ExcelTool.Editor
             source.Append("using System.Runtime.Serialization.Formatters.Binary;\n");
             source.Append("using System.IO;\n");
             source.Append("using " + ExcelDataTool.CODE_NAMESPACE + ";\n");
-            source.Append("using F8Framework.Core;\n");
-            source.Append("[Serializable]\n");
-            source.Append("public class F8DataManager : Singleton<F8DataManager>\n");
+            source.Append("using F8Framework.Core;\n\n");
+            source.Append("namespace F8Framework.F8DataManager\n");
             source.Append("{\n");
+            source.Append("\tpublic class F8DataManager : Singleton<F8DataManager>\n");
+            source.Append("\t{\n");
 
             //定义变量
             foreach (Type t in types)
             {
-                source.Append("\tprivate " + t.Name + " p_" + t.Name + ";\n");
+                source.Append("\t\tprivate " + t.Name + " p_" + t.Name + ";\n");
             }
 
             source.Append("\n");
@@ -225,54 +226,54 @@ namespace F8Framework.F8ExcelTool.Editor
                 fields.AddRange(list.Find(temp => temp.Name == typeName).GetFields()); //获取数据类的所有字段信息
                 string idType = fields.Find(f => f.Name == "id" || f.Name == "ID" || f.Name == "iD" || f.Name == "Id")
                     .FieldType.Name; //获取id的数据类型
-                source.Append("\tpublic " + typeName + " Get" + typeNameNotItem + "ByID" + "(" + idType + " id)\n");
-                source.Append("\t{\n");
-                source.Append("\t\t" + typeName + " t = null;\n");
-                source.Append("\t\tp_" + t.Name + ".Dict.TryGetValue(id, out t);\n");
-                source.Append("\t\tif (t == null) Debug.LogError(" + '"' + "can't find the id " + '"' + " + id " +
+                source.Append("\t\tpublic " + typeName + " Get" + typeNameNotItem + "ByID" + "(" + idType + " id)\n");
+                source.Append("\t\t{\n");
+                source.Append("\t\t\t" + typeName + " t = null;\n");
+                source.Append("\t\t\tp_" + t.Name + ".Dict.TryGetValue(id, out t);\n");
+                source.Append("\t\t\tif (t == null) Debug.LogError(" + '"' + "can't find the id " + '"' + " + id " +
                               "+ " +
                               '"' + " in " + t.Name + '"' + ");\n");
-                source.Append("\t\treturn t;\n");
-                source.Append("\t}\n\n");
+                source.Append("\t\t\treturn t;\n");
+                source.Append("\t\t}\n\n");
 
-                source.Append("\tpublic Dictionary<int, " + typeName + ">" + " Get" + typeNameNotItem + "()\n");
-                source.Append("\t{\n");
-                source.Append("\t\treturn p_" + t.Name + ".Dict;\n");
-                source.Append("\t}\n\n");
+                source.Append("\t\tpublic Dictionary<int, " + typeName + ">" + " Get" + typeNameNotItem + "()\n");
+                source.Append("\t\t{\n");
+                source.Append("\t\t\treturn p_" + t.Name + ".Dict;\n");
+                source.Append("\t\t}\n\n");
             }
 
             //加载所有配置表
-            source.Append("\tpublic void LoadAll()\n");
-            source.Append("\t{\n");
+            source.Append("\t\tpublic void LoadAll()\n");
+            source.Append("\t\t{\n");
             foreach (Type t in types)
             {
-                source.Append("\t\tp_" + t.Name + " = Load(" + '"' + t.Name + '"' + ") as " + t.Name + ";\n");
+                source.Append("\t\t\tp_" + t.Name + " = Load(" + '"' + t.Name + '"' + ") as " + t.Name + ";\n");
             }
 
-            source.Append("\t}\n\n");
+            source.Append("\t\t}\n\n");
 
             //运行时加载所有配置表
-            source.Append("\tpublic void RuntimeLoadAll(Dictionary<String, System.Object> objs)\n");
-            source.Append("\t{\n");
+            source.Append("\t\tpublic void RuntimeLoadAll(Dictionary<String, System.Object> objs)\n");
+            source.Append("\t\t{\n");
             foreach (Type t in types)
             {
-                source.Append("\t\tp_" + t.Name + " = objs[" + '"' + t.Name + '"' + "] as " + t.Name + ";\n");
+                source.Append("\t\t\tp_" + t.Name + " = objs[" + '"' + t.Name + '"' + "] as " + t.Name + ";\n");
             }
 
-            source.Append("\t}\n\n");
+            source.Append("\t\t}\n\n");
 
             //反序列化
-            source.Append("\tprivate System.Object Load(string name)\n");
-            source.Append("\t{\n");
-            source.Append("\t\tIFormatter f = new BinaryFormatter();\n");
-            source.Append("\t\tTextAsset text = AssetManager.Instance.Load<TextAsset>(name);\n");
-            source.Append("\t\tStream s = new MemoryStream(text.bytes);\n");
-            source.Append("\t\tSystem.Object obj = f.Deserialize(s);\n");
-            source.Append("\t\ts.Close();\n");
-            source.Append("\t\treturn obj;\n");
+            source.Append("\t\tprivate System.Object Load(string name)\n");
+            source.Append("\t\t{\n");
+            source.Append("\t\t\tIFormatter f = new BinaryFormatter();\n");
+            source.Append("\t\t\tTextAsset text = AssetManager.Instance.Load<TextAsset>(name);\n");
+            source.Append("\t\t\tStream s = new MemoryStream(text.bytes);\n");
+            source.Append("\t\t\tSystem.Object obj = f.Deserialize(s);\n");
+            source.Append("\t\t\ts.Close();\n");
+            source.Append("\t\t\treturn obj;\n");
+            source.Append("\t\t}\n");
             source.Append("\t}\n");
             source.Append("}\n");
-
             //保存脚本
             string path = Application.dataPath + ExcelDataTool.DataManagerFolder;
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
@@ -288,7 +289,7 @@ namespace F8Framework.F8ExcelTool.Editor
                 using System.Runtime.Serialization.Formatters.Binary;
                 using System.IO;
                 using ExcelConfigClass;
-                [Serializable]
+                
                 public class F8DataManager : Singleton<F8DataManager>
                 {
                     public test p_test;

@@ -1,10 +1,6 @@
 {
-    "name": "F8Framework.F8ExcelTool",
-    "rootNamespace": "",
-    "references": [
-        "F8Framework.Core",
-        "F8Framework.F8DataManager"
-    ],
+    "name": "F8Framework.F8DataManager",
+    "references": ["F8Framework.Core"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
