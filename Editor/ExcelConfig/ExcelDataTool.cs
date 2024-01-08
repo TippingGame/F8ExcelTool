@@ -72,7 +72,7 @@ namespace F8Framework.F8ExcelTool.Editor
         
         public static void LoadAllExcelData()
         {
-            FileTools.SafeDeleteDir(FileTools.FormatToUnityPath(FileTools.TruncatePath(GetScriptPath(), 4)) + DataManagerFolder);
+            FileTools.SafeDeleteDir(FileTools.FormatToUnityPath(FileTools.TruncatePath(GetScriptPath(), 3)) + "/Scripts/F8DataManager");
             CreateAsmdefFile();
             EditorUtility.ClearProgressBar();
             string INPUT_PATH = Application.dataPath + ExcelPath;
