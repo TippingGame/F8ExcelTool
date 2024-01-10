@@ -40,7 +40,7 @@ Unity 读取 Excel 的工具。
 
 #### 网络问题
 
-若您的网络不佳，也可以下载核心包、Excel 包文件，直接修改 package.json 并放入 Packages 文件夹。
+若您的网络不佳，也可以下载核心包、Excel 包文件，直接放入工程里，或者修改 package.json 并放入 Packages 文件夹。
 
 ### 初始化
 
