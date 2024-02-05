@@ -230,7 +230,7 @@ namespace F8Framework.F8ExcelTool.Editor
                 source.Append("\t\t{\n");
                 source.Append("\t\t\t" + typeName + " t = null;\n");
                 source.Append("\t\t\tp_" + t.Name + ".Dict.TryGetValue(id, out t);\n");
-                source.Append("\t\t\tif (t == null) Debug.LogError(" + '"' + "can't find the id " + '"' + " + id " +
+                source.Append("\t\t\tif (t == null) LogF8.LogError(" + '"' + "can't find the id " + '"' + " + id " +
                               "+ " +
                               '"' + " in " + t.Name + '"' + ");\n");
                 source.Append("\t\t\treturn t;\n");
@@ -273,11 +273,15 @@ namespace F8Framework.F8ExcelTool.Editor
             source.Append("\t\t\treturn obj;\n");
             source.Append("\t\t}\n");
             source.Append("\t}\n");
-            source.Append("}\n");
+            source.Append("}");
             //保存脚本
             string path = Application.dataPath + ExcelDataTool.DataManagerFolder;
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            StreamWriter sw = new StreamWriter(path + "/" + ExcelDataTool.DataManagerName);
+
+            // 使用 StreamWriter 的构造函数指定 Encoding 和 NewLine，确保行尾符一致
+            StreamWriter sw = new StreamWriter(path + "/" + ExcelDataTool.DataManagerName, false, System.Text.Encoding.UTF8);
+            sw.NewLine = "\n"; // 设置行尾符为 UNIX 风格
+
             sw.WriteLine(source.ToString());
             LogF8.LogConfig("已生成 " + path + "/<color=#FFFF00>" + ExcelDataTool.DataManagerName + "</color>");
             sw.Close();
@@ -298,14 +302,14 @@ namespace F8Framework.F8ExcelTool.Editor
                     {
                         testItem t = null;
                         p_test.Dict.TryGetValue(id, out t);
-                        if (t == null) Debug.LogError("can't find the id " + id + " in test");
+                        if (t == null) LogF8.LogError("can't find the id " + id + " in test");
                         return t;
                     }
                     public test2Item GetTest2ByID(String id)
                     {
                         test2Item t = null;
                         p_test2.Dict.TryGetValue(id, out t);
-                        if (t == null) Debug.LogError("can't find the id " + id + " in test2");
+                        if (t == null) LogF8.LogError("can't find the id " + id + " in test2");
                         return t;
                     }
                     public void LoadAll()

@@ -153,7 +153,7 @@ namespace F8Framework.F8ExcelTool.Editor
             ProgressBar.UpdataBar("创建数据管理类: F8DataManager", 0.999f);
             ScriptGenerator.CreateDataManager(assembly);
             ProgressBar.UpdataBar("\n导表成功!", 1);
-            UnityEditor.AssetDatabase.Refresh();
+            AssetDatabase.Refresh();
             LogF8.LogConfig("<color=yellow>导表成功!</color>");
         }
 
