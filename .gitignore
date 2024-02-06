@@ -70,3 +70,15 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# tippinggame
+/CHANGELOG.md.meta
+/Editor.meta
+/LICENSE.md.meta
+/link.xml.meta
+/package.json.meta
+/Plugins.meta
+/README.md.meta
+/Runtime.meta
+/Scripts.meta
+/Tests.meta
