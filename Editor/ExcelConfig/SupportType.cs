@@ -205,7 +205,7 @@ namespace F8Framework.F8ExcelTool.Editor
             source.Append("using F8Framework.Core;\n\n");
             source.Append("namespace F8Framework.F8DataManager\n");
             source.Append("{\n");
-            source.Append("\tpublic class F8DataManager : Singleton<F8DataManager>\n");
+            source.Append("\tpublic class F8DataManager : ModuleSingleton<F8DataManager>, IModule\n");
             source.Append("\t{\n");
 
             //定义变量
@@ -272,6 +272,34 @@ namespace F8Framework.F8ExcelTool.Editor
             source.Append("\t\t\ts.Close();\n");
             source.Append("\t\t\treturn obj;\n");
             source.Append("\t\t}\n");
+            source.Append("\n");
+            
+            //模块方法
+            source.Append("\t\tpublic void OnInit(object createParam)\n");
+            source.Append("\t\t{\n");
+            source.Append("\n");
+            source.Append("\t\t}\n");
+            source.Append("\n");
+            source.Append("\t\tpublic void OnUpdate()\n");
+            source.Append("\t\t{\n");
+            source.Append("\n");
+            source.Append("\t\t}\n");
+            source.Append("\n");
+            source.Append("\t\tpublic void OnLateUpdate()\n");
+            source.Append("\t\t{\n");
+            source.Append("\n");
+            source.Append("\t\t}\n");
+            source.Append("\n");
+            source.Append("\t\tpublic void OnFixedUpdate()\n");
+            source.Append("\t\t{\n");
+            source.Append("\n");
+            source.Append("\t\t}\n");
+            source.Append("\n");
+            source.Append("\t\tpublic void OnTermination()\n");
+            source.Append("\t\t{\n");
+            source.Append("\n");
+            source.Append("\t\t}\n");
+
             source.Append("\t}\n");
             source.Append("}");
             //保存脚本
@@ -294,7 +322,7 @@ namespace F8Framework.F8ExcelTool.Editor
                 using System.IO;
                 using ExcelConfigClass;
                 
-                public class F8DataManager : Singleton<F8DataManager>
+                public class F8DataManager : ModuleSingleton<F8DataManager>, IModule
                 {
                     public test p_test;
                     public test2 p_test2;
