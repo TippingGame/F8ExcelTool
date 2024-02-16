@@ -458,7 +458,7 @@ namespace F8Framework.F8ExcelTool
 
         public void OnTermination()
         {
-            
+            base.Destroy();
         }
     }
 }
