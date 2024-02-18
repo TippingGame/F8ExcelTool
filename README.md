@@ -8,11 +8,7 @@
 
 ## 简介
 
-Unity 读取 Excel 的工具。
-
-点击 F8 自动生成 C# 索引字段，随后：
-
-支持的使用方式：
+Unity 读取 Excel 的工具
 
 - **加载缓存**：高性能，加载手动生成的 Excel 二进制缓存
 
@@ -26,10 +22,6 @@ Unity 读取 Excel 的工具。
 注意！内置在->F8Framework核心：https://github.com/TippingGame/F8Framework.git  
 方式一：直接下载文件，放入Unity  
 方式二：Unity->点击菜单栏->Window->Package Manager->点击+号->Add Package from git URL->输入：https://github.com/TippingGame/F8Framework.git
-
-#### 网络问题
-
-若您的网络不佳，也可以下载核心包、Excel 包文件，直接放入工程里，或者修改 package.json 并放入 Packages 文件夹。
 
 ## 初始化
 
