@@ -22,19 +22,10 @@ Unity 读取 Excel 的工具。
 
 系统支持：Win/Android/iOS/Mac/Linux
 
-## 导入
-
-在 Unity 包管理器中，使用 Git URL 添加 F8 核心包、Excel 包。
-
-1. 打开 Unity Editor
-
-2. 点击菜单的 **Window** 项，再点击 **Package Manager** 子项
-
-3. 点击左上角 **+** 号，选择 **Add Package from git URL**
-
-4. 输入 <https://github.com/TippingGame/F8Framework.git>，请确认导入成功
-
-5. 重复 4. 并输入 <https://github.com/TippingGame/F8ExcelTool.git>，请确认导入成功
+## 导入插件（需要首先导入核心）
+注意！内置在->F8Framework核心：https://github.com/TippingGame/F8Framework.git  
+方式一：直接下载文件，放入Unity  
+方式二：Unity->点击菜单栏->Window->Package Manager->点击+号->Add Package from git URL->输入：https://github.com/TippingGame/F8Framework.git
 
 #### 网络问题
 
