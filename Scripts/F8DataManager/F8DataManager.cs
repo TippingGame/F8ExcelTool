@@ -13,7 +13,7 @@ using F8Framework.Core;
 
 namespace F8Framework.F8DataManager
 {
-	public class F8DataManager : ModuleSingleton<F8DataManager>, IModule
+	public class F8DataManager : Singleton<F8DataManager>
 	{
 		public void LoadAll()
 		{
@@ -33,31 +33,6 @@ namespace F8Framework.F8DataManager
 			System.Object obj = f.Deserialize(s);
 			s.Close();
 			return obj;
-		}
-
-		public void OnInit(object createParam)
-		{
-			
-		}
-
-		public void OnUpdate()
-		{
-			
-		}
-
-		public void OnLateUpdate()
-		{
-			
-		}
-
-		public void OnFixedUpdate()
-		{
-			
-		}
-
-		public void OnTermination()
-		{
-			
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace F8Framework.F8ExcelTool
         public const string ARRAY_ARRAY_OBJ = "obj[][]";
     }
 
-    public class ReadExcel : ModuleSingleton<ReadExcel>, IModule
+    public class ReadExcel : Singleton<ReadExcel>
     {
         private const string CODE_NAMESPACE = "F8Framework.F8ExcelDataClass"; //由表生成的数据类型均在此命名空间内
         private const string ExcelPath = "config"; //需要导表的目录
@@ -434,31 +434,6 @@ namespace F8Framework.F8ExcelTool
             }
 
             return o;
-        }
-
-        public void OnInit(object createParam)
-        {
-            
-        }
-
-        public void OnUpdate()
-        {
-            
-        }
-
-        public void OnLateUpdate()
-        {
-            
-        }
-
-        public void OnFixedUpdate()
-        {
-            
-        }
-
-        public void OnTermination()
-        {
-            base.Destroy();
         }
     }
 }

@@ -157,7 +157,7 @@ namespace F8Framework.F8ExcelTool.Editor
             LogF8.LogConfig("<color=yellow>导表成功!</color>");
         }
 
-        [UnityEditor.MenuItem("开发工具/运行时读取Excel _F7")]
+        [UnityEditor.MenuItem("开发工具/运行时读取Excel _F7", false, 101)]
         public static void ReLoadExcelData()
         {
             ReadExcel.Instance.LoadAllExcelData();
